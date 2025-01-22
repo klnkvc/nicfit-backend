@@ -10,6 +10,7 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
+const baseUrl = "/api/v1"
 
 const start = async function () {
   try {
@@ -54,7 +55,7 @@ app.use(express.static("public"));
 // Route-specific CORS (not necessary if you use the global one)
 app.use("/users", cors(corsOptions));
 
-app.use(router);
+app.use(baseUrl, router);
 
 start();
 
